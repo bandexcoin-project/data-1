@@ -144,7 +144,7 @@ CREATE TABLE public."position" (
     security_id smallint,
     tm timestamp without time zone NOT NULL,
     qty double precision NOT NULL,
-    avg_price double precision NOT NULL,
+    avg_px double precision NOT NULL,
     realized_pnl double precision NOT NULL,
     "desc" character varying(1000)
 );
