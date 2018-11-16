@@ -126,6 +126,8 @@ CREATE TABLE public.exchange (
     tz character varying(20),
     mic character(4),
     tick_size_table character varying(5000),
+    half_day int4,
+    half_days varchar(5000),
     odd_lot_allowed boolean
 );
 
