@@ -118,15 +118,15 @@ CREATE TABLE public.exchange (
     id smallint DEFAULT nextval('public.exchange_id_seq'::regclass) NOT NULL,
     name character varying(50) NOT NULL,
     "desc" character varying(1000),
-    trade_period integer,
-    break_period integer,
+    trade_period varchar(32),
+    break_period varchar(32),
     country character(2),
     ib_name character varying(50),
     bb_name character varying(50),
     tz character varying(20),
     mic character(4),
     tick_size_table character varying(5000),
-    half_day int4,
+    half_day varchar(32),
     half_days varchar(5000),
     odd_lot_allowed boolean
 );
@@ -346,10 +346,10 @@ COPY public.broker_account (id, name, adapter, params, limits) FROM stdin;
 COPY public.exchange (id, name, "desc", trade_period, break_period, country, ib_name, bb_name, tz, mic, tick_size_table, odd_lot_allowed) FROM stdin;
 106	FX	forex pairs	\N	\N	  	IDEALPRO		\N	\N	\N	\N
 107	CME	chicago 	\N	\N	US			US/Eastern	\N	\N	\N
-101	SZ	shenzhen	9301500	11301300	CN	SEHKSZSE	CS	Asia/Shanghai	\N	0 10000000 0.01	\N
-102	SH	shanghai	9301500	11301300	CN	SEHKNTL	CG	Asia/Shanghai	\N	0 10000000 0.01	\N
-104	US	united states	9301600	\N	US	SMART	US	US/Eastern	\N	0 1 0.0001;1 10000000 0.01	t
-103	HK	hongkong	9301600	12001300	CN	SEHK	HK	Asia/Shanghai	\N	0 0.099 0.001;0.1 0.199 0.001;0.2 0.249 0.001;0.25 0.395 0.005;0.4 0.495 0.005;0.5 0.74 0.01;0.75 0.99 0.01;1 1.24 0.01;1.25 1.49 0.01;1.5 1.74 0.01;1.75 1.99 0.01;2 2.49 0.01;2.5 2.99 0.01;3 3.49 0.01;3.5 3.99 0.01;4 4.49 0.01;4.5 4.99 0.01;5 9.99 0.01;10 14.98 0.02;15 19.98 0.02;20 24.95 0.05;25 29.95 0.05;30 34.95 0.05;35 39.95 0.05;40 44.95 0.05;45 49.95 0.05;50 54.95 0.05;55 59.95 0.05;60 64.95 0.05;65 69.95 0.05;70 74.95 0.05;75 79.95 0.05;80 84.95 0.05;85 89.95 0.05;90 94.95 0.05;95 99.95 0.05;100 149.9 0.1;150 199.9 0.1;200 299.8 0.2;300 399.8 0.2;400 499.8 0.2;500 749.5 0.5;750 999.5 0.5;1000 1499 1;1500 1999 1;2000 2998 2;3000 3998 2;4000 4998 2;5000 7495 5;7500 10000000 5	\N
+101	SZ	shenzhen	9:30-15:00	11:30-13:00	CN	SEHKSZSE	CS	Asia/Shanghai	\N	0 10000000 0.01	\N
+102	SH	shanghai	9:30-15:00	11:30-13:00	CN	SEHKNTL	CG	Asia/Shanghai	\N	0 10000000 0.01	\N
+104	US	united states	9:30-16:00	\N	US	SMART	US	US/Eastern	\N	0 1 0.0001;1 10000000 0.01	t
+103	HK	hongkong	9:30-16:00	12:00-13:00	CN	SEHK	HK	Asia/Shanghai	\N	0 0.099 0.001;0.1 0.199 0.001;0.2 0.249 0.001;0.25 0.395 0.005;0.4 0.495 0.005;0.5 0.74 0.01;0.75 0.99 0.01;1 1.24 0.01;1.25 1.49 0.01;1.5 1.74 0.01;1.75 1.99 0.01;2 2.49 0.01;2.5 2.99 0.01;3 3.49 0.01;3.5 3.99 0.01;4 4.49 0.01;4.5 4.99 0.01;5 9.99 0.01;10 14.98 0.02;15 19.98 0.02;20 24.95 0.05;25 29.95 0.05;30 34.95 0.05;35 39.95 0.05;40 44.95 0.05;45 49.95 0.05;50 54.95 0.05;55 59.95 0.05;60 64.95 0.05;65 69.95 0.05;70 74.95 0.05;75 79.95 0.05;80 84.95 0.05;85 89.95 0.05;90 94.95 0.05;95 99.95 0.05;100 149.9 0.1;150 199.9 0.1;200 299.8 0.2;300 399.8 0.2;400 499.8 0.2;500 749.5 0.5;750 999.5 0.5;1000 1499 1;1500 1999 1;2000 2998 2;3000 3998 2;4000 4998 2;5000 7495 5;7500 10000000 5	\N
 \.
 
 
