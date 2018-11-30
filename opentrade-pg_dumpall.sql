@@ -117,7 +117,7 @@ ALTER TABLE public.exchange_id_seq OWNER TO postgres;
 CREATE TABLE public.exchange (
     id smallint DEFAULT nextval('public.exchange_id_seq'::regclass) NOT NULL,
     name character varying(50) NOT NULL,
-    "desc" character varying(1000),
+    params character varying(1000),
     trade_period varchar(32),
     break_period varchar(32),
     country character(2),
@@ -234,7 +234,8 @@ CREATE TABLE public.security (
     industry integer,
     industry_group integer,
     sub_industry integer,
-    name character varying(100)
+    ric character varying(30),
+    params character varying(1000)
 );
 
 
@@ -343,7 +344,7 @@ COPY public.broker_account (id, name, adapter, params, limits) FROM stdin;
 -- Data for Name: exchange; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.exchange (id, name, "desc", trade_period, break_period, country, ib_name, bb_name, tz, mic, tick_size_table, odd_lot_allowed, half_day, half_days) FROM stdin;
+COPY public.exchange (id, name, params, trade_period, break_period, country, ib_name, bb_name, tz, mic, tick_size_table, odd_lot_allowed, half_day, half_days) FROM stdin;
 106	FX	forex pairs	\N	\N	  	IDEALPRO		\N	\N	\N	\N	\N	\N
 107	CME	chicago 	\N	\N	US			US/Eastern	\N	\N	\N	\N	\N
 101	SZ	shenzhen	9301500	11301300	CN	SEHKSZSE	CS	Asia/Shanghai	\N	0 10000000 0.01	\N	\N	\N
@@ -358,7 +359,7 @@ COPY public.exchange (id, name, "desc", trade_period, break_period, country, ib_
 -- Data for Name: security; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.security (id, symbol, local_symbol, type, currency, bbgid, cusip, isin, sedol, rate, multiplier, tick_size, lot_size, close_price, put_or_call, opt_attribute, maturity_date, strike_price, exchange_id, underlying_id, adv20, market_cap, sector, industry, industry_group, sub_industry, name) FROM stdin;
+COPY public.security (id, symbol, local_symbol, type, currency, bbgid, cusip, isin, sedol, rate, multiplier, tick_size, lot_size, close_price, put_or_call, opt_attribute, maturity_date, strike_price, exchange_id, underlying_id, adv20, market_cap, sector, industry, industry_group, sub_industry, ric) FROM stdin;
 12370	ACT	ACT	STK	USD	BBG00JGGJ4N1	00768Y545	US00768Y5454	BF5GS81	\N	\N	\N	100	26.4899999999999984	\N	\N	\N	\N	104	\N	3834.5	13.2449999999999992	\N	\N	\N	\N	\N
 12371	AC	AC	STK	USD	BBG008NZ8QC0	045528106	US0455281065	BZ6VMW7	\N	\N	\N	100	38.1000000000000014	\N	\N	\N	\N	104	\N	15602	154.281302000000011	14	141011	1410	\N	\N
 12372	ACU	ACU	STK	USD	BBG000BB3LM8	004816104	US0048161048	2006329	\N	\N	\N	100	20.9100000000000001	\N	\N	\N	\N	104	\N	6659.75	70.5516159999999957	11	111913	1119	11191311	\N
