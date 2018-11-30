@@ -68,7 +68,7 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 --
 
 CREATE SEQUENCE public.broker_account_id_seq
-    START WITH 100
+    START WITH 102
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -246,7 +246,7 @@ ALTER TABLE public.security OWNER TO postgres;
 --
 
 CREATE SEQUENCE public.sub_account_id_seq
-    START WITH 100
+    START WITH 104
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
