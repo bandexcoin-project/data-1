@@ -13460,7 +13460,7 @@ CREATE INDEX position__index_acc_sec_tm ON public."position" USING btree (sub_ac
 -- Name: security_symbol_exchange_index; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE UNIQUE INDEX security_symbol_exchange_index ON public.security USING btree (symbol, exchange_id);
+CREATE UNIQUE INDEX security_symbol_exchange_index ON public.security USING btree (exchange_id, symbol);
 
 
 --
